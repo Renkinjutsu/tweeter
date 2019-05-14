@@ -1,0 +1,46 @@
+
+
+main.container {
+    border: hidden;
+    padding: 0.5em;
+}
+
+main section.new-tweet {
+    border: 2px solid #eee;
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 0.5em;
+}
+
+main section.new-tweet > h2 {
+    margin-top: 0;
+    position: relative;
+    border-bottom: 2px solid black;
+}
+
+section.new-tweet form {
+    display: flex;
+    flex-direction: column;
+}
+
+section.new-tweet form > textarea {
+    justify-self: flex-start;
+    align-self: center;
+    width: 100%;
+}
+
+section.new-tweet footer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+section.new-tweet footer > input {
+    justify-self: flex-start;
+}
+
+section.new-tweet footer > span {
+
+}
+

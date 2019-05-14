@@ -13,13 +13,30 @@ html {
 /*
  * Global layout stuff
  */
-
+header {
+  positon: relative;
+  height: 80px;
+}
 body {
   margin: 0;
   color: #244751;
   background-color: #eee;
+  width: 100%;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
+main {
+  width: 450px;
+  margin: 0 auto;
+  background: white;
+  position: relative;
+}
+
+main p {
+  top: 140px;
+  margin: 0 auto;
+  height: 100%
+}
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
