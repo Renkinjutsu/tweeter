@@ -19,10 +19,35 @@ const tweetData = {
     "created_at": 1461116232227
   }
   
+
+//   function escape(str) {
+//     var div = document.createElement('div');
+//     div.appendChild(document.createTextNode(str));
+//     return div.innerHTML;
+//   }
+
 const createTweetElement = function(database) {
-    let article = document.createElement("article");
+    let article = document.createElement("article");  // $("<article class='new-tweet'>")
+    let header = document.createElement("header");
+    let h2 = document.createElement("h2");
+    let h3 = document.createElement("h3");
+    let p = document.createElement("p");
+    let footer = document.createElement("footer");
     article.setAttribute("class", "new-tweet");
-    article.innerText = database.user.name;
+    header.appendChild(h2);
+    header.appendChild(h3);
+    article.appendChild(header);
+    article.appendChild(p);
+    article.appendChild(footer);
+    h2.innerText = database.user.name;
+    h3.innerText = database.user.handle;
+    p.innerText = database.content.text;
+    footer.innerText = database.created_at.toString();
+
+    // $(`<article>
+    //      <p>${escape(database.content)}</p>
+    //   </article>`)
+      
     return article;
 }
   var $tweet = createTweetElement(tweetData)
