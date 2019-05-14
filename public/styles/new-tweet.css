@@ -2,25 +2,32 @@
 
 main.container {
     border: hidden;
-    padding: 0.5em;
+    padding: 1em;
 }
 
-main section.new-tweet {
+main.container .new-tweet {
     border: 2px solid #eee;
     background-color: #eee;
     border-radius: 5px;
-    padding: 0.5em;
+    margin: 1em;
+    opacity: 0.6;
 }
 
-main section.new-tweet > h2 {
-    margin-top: 0;
+main.container .new-tweet:hover {
+    opacity: 1;
+}
+
+main.container .new-tweet > h2 {
+    margin: 0.5em;
     position: relative;
     border-bottom: 2px solid black;
+
 }
 
 section.new-tweet form {
     display: flex;
     flex-direction: column;
+    margin: 0.5em;
 }
 
 section.new-tweet form > textarea {
@@ -29,18 +36,39 @@ section.new-tweet form > textarea {
     width: 100%;
 }
 
-section.new-tweet footer {
+.new-tweet footer {
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
 }
 
-section.new-tweet footer > input {
+.new-tweet footer > input {
     justify-self: flex-start;
 }
 
-section.new-tweet footer > span {
-
+.new-tweet header {
+    display: flex;
+    justify-content: space-between;
 }
 
+.new-tweet header > h2 {
+    margin: 0 0.5em;
+    height: 2em;
+}
+
+.new-tweet header > h3 {
+    margin: 0 0.5em;
+    height: 2em;
+}
+
+.new-tweet header > h2:before {
+    content: "ablasdflks""
+    
+}
+article.new-tweet p {
+    background: white;
+    margin: 0 auto;
+    width: 100%;
+    border
+}

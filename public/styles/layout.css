@@ -14,9 +14,9 @@ html {
  * Global layout stuff
  */
 header {
-  positon: relative;
-  height: 80px;
+
 }
+
 body {
   margin: 0;
   color: #244751;
@@ -25,11 +25,11 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-main {
+main.container {
   width: 450px;
+  padding-top: 100px;
   margin: 0 auto;
   background: white;
-  position: relative;
 }
 
 main p {
