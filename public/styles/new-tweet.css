@@ -42,6 +42,8 @@ section.new-tweet form > textarea {
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
+    padding: 0.5em;
+    border-top: 2px solid black;
 }
 
 .new-tweet footer > input {
@@ -51,6 +53,7 @@ section.new-tweet form > textarea {
 .new-tweet header {
     display: flex;
     justify-content: space-between;
+    padding: 0.5em;
 }
 
 .new-tweet header > h2 {
@@ -63,13 +66,12 @@ section.new-tweet form > textarea {
     height: 2em;
 }
 
-.new-tweet header > h2:before {
-    content: "ablasdflks""
-    
+.new-tweet header > img {
+    justify-self: flex-start;   
 }
 article.new-tweet p {
     background: white;
     margin: 0 auto;
     width: 100%;
-    border
+    padding: 0.5em;
 }
