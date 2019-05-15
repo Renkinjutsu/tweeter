@@ -11,11 +11,11 @@ main.container .new-tweet {
     background-color: #eee;
     border-radius: 5px;
     margin: 1em;
-    opacity: 0.6;
+    z-index: 2;
 }
 
 main.container .new-tweet:hover {
-    opacity: 1;
+    filter: brightness(103%);
 }
 
 main.container .new-tweet > h2 {
@@ -75,6 +75,14 @@ article.new-tweet p {
     width: 100%;
     padding: 0.5em;
 }
+
+i {
+    opacity: 0;
+}
+.new-tweet:hover i {
+    opacity: 1;
+}
+
 
 .error {
     color: #a94442;

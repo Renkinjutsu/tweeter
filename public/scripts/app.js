@@ -128,7 +128,6 @@ $(document).ready(function() {
             }
         },
         errorPlacement: function(error, element) {
-            // console.log('element:', element, 'error: ', error)
             element.parent().prepend(error)
         },
         
@@ -158,12 +157,12 @@ $(document).ready(function() {
         // queryString == "" && alert('please input')
     // })
    $('#composeBtn').on('click', () => {
-        $('section.new-tweet').animate({
-            height: 'toggle'
+       $('section.new-tweet').animate({
+           height: 'toggle'
         })
         validator.resetForm();
    })
-
+        
 })
 //   var $tweet = createTweetElement(tweetData)
 
