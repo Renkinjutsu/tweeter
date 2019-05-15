@@ -13,18 +13,23 @@
     <!-- tweet CSS -->
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
 
-
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
+    <!-- Compose Button CSS -->
+    <link rel="stylesheet" href="/styles/compose-button.css" type="text/css" />
+
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
+    
+    <!-- jquery validate plugin -->
+    <script type ="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+    
+    <!-- character counter JS -->
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/app.js"></script>
-
-    <!-- character counter JS -->
-    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -40,20 +45,21 @@
     <nav id="nav-bar">
       <img class="logo" src="/images/bird.png">
       <span class="header">Tweeter</span>
+      <button id="composeBtn" type="button">Compose</button>
     </nav>
     </header>
     <!-- Page-specific (main) content here -->
     <main class="container">
-      <section class="new-tweet">
-        <h2>Compose Tweet</h2>
-        <form method="POST" action="/tweets">
-          <textarea id='tweetbox' name="text" placeholder="What are you humming about?"></textarea>
-          <footer>
-            <input type="submit" value="Tweet">
-            <span class="counter">140</span>
-          </footer>
-        </form>
-      </section>
+            <section class="new-tweet">
+              <h2>Compose Tweet</h2>
+              <form method="POST" action="/tweets">
+                <textarea id='tweetbox' name="text" placeholder="What are you humming about?"></textarea>
+                <footer>
+                  <input type="submit" value="Tweet">
+                  <span class="counter">140</span>
+                </footer>
+              </form>
+            </section>
       <article class='new-tweet'>
         <header>
           <img>

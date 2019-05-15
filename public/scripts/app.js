@@ -84,15 +84,86 @@ const createTweetElement = function(database) {
     return article;
 }
 
-function renderTweets(tweets, cb) {
+function renderTweets(tweets) {
     for (i=0; i < tweets.length; i++) {
-        let eachTweet = cb(tweets[i]);
+        let eachTweet = createTweetElement(tweets[i]);
         $('main.container').append(eachTweet);
     }
 }
 
+function loadTweets () {
+    $.get('/tweets', renderTweets)
+    // $.ajax({
+    //     url: '/tweets',
+    //     type: 'GET',
+    //     data: queryString,
+    //     error: () =>
+    //         console.log('error'),
+    //     success: () =>
+    //         console.log(queryString),
+    // });
+}
+
+
+
 $(document).ready(function() {
-   renderTweets(data, createTweetElement)
+    // load initial tweets
+    loadTweets()
+    // renderTweets(data)
+    // $('form').on('submit', function (e) {
+    //     e.preventDefault()
+    const validator = $('form').validate({
+        rules: {
+            text: {
+                required: true,
+                minlength: 1,
+                maxlength: 140
+            }
+        },
+        messages: {
+            text:{
+                required: "Must have an input",
+                minlength: "Write something I'm giving up on you",
+                maxlength: "You've put too many characters!"
+            }
+        },
+        errorPlacement: function(error, element) {
+            // console.log('element:', element, 'error: ', error)
+            element.parent().prepend(error)
+        },
+        
+        submitHandler: function (form) {
+            // let query = $(this).serialize();
+            // let queryString =query.substring(5);
+            let query = $(form).serialize();
+            let queryString = query.substring(5);
+            console.log(queryString)
+            $.ajax({
+                url: '/tweets',
+                type: 'POST',
+                data: query,
+                error: () =>
+                    console.log('error'),
+                success: function () {
+                    loadTweets()
+                }
+            });    
+        }   
+    })
+    $("textarea#tweetbox").on("input", function() {
+        validator.resetForm();
+    })
+        // queryString.length < 140 || alert("error too many characters")
+        // queryString == null && alert('please input')
+        // queryString == "" && alert('please input')
+    // })
+   $('#composeBtn').on('click', () => {
+        $('section.new-tweet').animate({
+            height: 'toggle'
+        })
+        validator.resetForm();
+   })
+
 })
 //   var $tweet = createTweetElement(tweetData)
 

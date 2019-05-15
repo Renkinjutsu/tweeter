@@ -1,0 +1,7 @@
+#composeBtn {
+    opacity: 0.7;
+}
+
+#composeBtn:hover {
+    opacity: 1;
+}
