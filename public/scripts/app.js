@@ -64,18 +64,29 @@ const createTweetElement = function(database) {
     let p = document.createElement("p");
     let footer = document.createElement("footer");
     let img = document.createElement("img");
-    article.setAttribute("class", "new-tweet");
+    let $icons = $(`
+                    <span class='date'>
+                        ${database.created_at}
+                    </span>
+                    <span>
+                        <i class='fab fa-font-awesome-flag'></i>
+                        <i class='fas fa-retweet'></i>
+                        <i class='fas fa-heart'></i>
+                    </span>
+                    `);
     header.appendChild(img);
     header.appendChild(h2);
     header.appendChild(h3);
     article.appendChild(header);
     article.appendChild(p);
-    article.appendChild(footer);
+    let newFooter = article.appendChild(footer);
+    $(newFooter).append($icons);
+    article.setAttribute("class", "new-tweet");
     img.setAttribute("src", database.user.avatars.small)
     h2.innerText = database.user.name;
     h3.innerText = database.user.handle;
     p.innerText = database.content.text;
-    footer.innerText = database.created_at;
+
 
     // $(`<article>
     //      <p>${escape(database.content)}</p>
