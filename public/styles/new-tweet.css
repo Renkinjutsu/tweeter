@@ -76,7 +76,8 @@ article.new-tweet p {
     background: white;
     margin: 0 auto;
     width: 100%;
-    padding: 0.5em;
+    padding: 1em;
+    word-break: break-word;
 }
 
 i {
@@ -85,7 +86,6 @@ i {
 .new-tweet:hover i {
     opacity: 1;
 }
-
 
 .error {
     color: #a94442;
