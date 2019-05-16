@@ -141,7 +141,7 @@ $(document).ready(function() {
         errorPlacement: function(error, element) {
             element.parent().prepend(error)
         },
-        
+      
         submitHandler: function (form) {
             // let query = $(this).serialize();
             // let queryString =query.substring(5);
