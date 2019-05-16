@@ -1,9 +1,9 @@
-function escape(str) {
+function escape(str) { //escape text to make it safe for use
     var div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
     }
-
+// create a tweet template
 const createTweetElement = function(database) {
     let $icons =    `<article class='new-tweet'>
                         <header>
@@ -28,14 +28,14 @@ const createTweetElement = function(database) {
                     `;
     return $icons;
 }
-
+// add each individual tweet to container
 function renderTweets(tweets) {
     for (i=0; i < tweets.length; i++) {
         let eachTweet = createTweetElement(tweets[i]);
         $('#tweetsHolder').prepend(eachTweet);
     }
 }
-
+// render tweets on ajax get request
 function loadTweets () {
     $.get('/tweets', renderTweets);
 }

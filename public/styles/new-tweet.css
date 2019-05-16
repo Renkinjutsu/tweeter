@@ -10,10 +10,11 @@ main.container .new-tweet {
     border-radius: 5px;
     margin: 1em;
     z-index: 2;
+    opacity: 0.7;
 }
 
 main.container .new-tweet:hover {
-    filter: brightness(103%);
+    opacity: 1;
 }
 
 main.container .new-tweet > h2 {
