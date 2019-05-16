@@ -50,69 +50,71 @@ const data = [
     }
   ];
 
-//   function escape(str) {
-//     var div = document.createElement('div');
-//     div.appendChild(document.createTextNode(str));
-//     return div.innerHTML;
-//   }
+  function escape(str) {
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
 
 const createTweetElement = function(database) {
-    let article = document.createElement("article");  // $("<article class='new-tweet'>")
-    let header = document.createElement("header");
-    let h2 = document.createElement("h2");
-    let h3 = document.createElement("h3");
-    let p = document.createElement("p");
-    let footer = document.createElement("footer");
-    let img = document.createElement("img");
-    let $icons = $(`
-                    <span class='date'>
-                        ${database.created_at}
-                    </span>
-                    <span>
-                        <i class='fab fa-font-awesome-flag'></i>
-                        <i class='fas fa-retweet'></i>
-                        <i class='fas fa-heart'></i>
-                    </span>
-                    `);
-    header.appendChild(img);
-    header.appendChild(h2);
-    header.appendChild(h3);
-    article.appendChild(header);
-    article.appendChild(p);
-    let newFooter = article.appendChild(footer);
-    $(newFooter).append($icons);
-    article.setAttribute("class", "new-tweet");
-    img.setAttribute("src", database.user.avatars.small)
-    h2.innerText = database.user.name;
-    h3.innerText = database.user.handle;
-    p.innerText = database.content.text;
+    // let article = document.createElement("article");  // $("<article class='new-tweet'>")
+    // let header = document.createElement("header");
+    // let h2 = document.createElement("h2");
+    // let h3 = document.createElement("h3");
+    // let p = document.createElement("p");
+    // let footer = document.createElement("footer");
+    // let img = document.createElement("img");
+    let $icons = `<article class='new-tweet'>
+                        <header>
+                            <img src='${escape(database.user.avatars.small)}'>
+                            <h2>${escape(database.user.name)}</h2>
+                            <h3>${escape(database.user.handle)}</h3>
+                        </header>
+                        <p>
+                            ${escape(database.content.text)}
+                        </p>
+                        <footer>
+                            <span class='date'>
+                                ${escape(moment(database.created_at))}
+                            </span>
+                            <span>
+                                <i class='fab fa-font-awesome-flag'></i>
+                                <i class='fas fa-retweet'></i>
+                                <i class='fas fa-heart'></i>
+                            </span>
+                        </footer>
+                    </article>
+                    `
+    // header.appendChild(img);
+    // header.appendChild(h2);
+    // header.appendChild(h3);
+    // article.appendChild(header);
+    // article.appendChild(p);
+    // let newFooter = article.appendChild(footer);
+    // $(newFooter).append($icons);
+    // article.setAttribute("class", "new-tweet");
+    // img.setAttribute("src", database.user.avatars.small)
+    // h2.innerText = database.user.name;
+    // h3.innerText = database.user.handle;
+    // p.innerText = database.content.text;
 
 
     // $(`<article>
     //      <p>${escape(database.content)}</p>
     //   </article>`)
-      
-    return article;
+    return $icons;
 }
 
 function renderTweets(tweets) {
     for (i=0; i < tweets.length; i++) {
         let eachTweet = createTweetElement(tweets[i]);
-        $('main.container').append(eachTweet);
+        $('#tweetsHolder').prepend(eachTweet);
     }
 }
 
 function loadTweets () {
     $.get('/tweets', renderTweets)
-    // $.ajax({
-    //     url: '/tweets',
-    //     type: 'GET',
-    //     data: queryString,
-    //     error: () =>
-    //         console.log('error'),
-    //     success: () =>
-    //         console.log(queryString),
-    // });
+    .then(response => {console.log(response)})
 }
 
 
@@ -155,6 +157,7 @@ $(document).ready(function() {
                 error: () =>
                     console.log('error'),
                 success: function () {
+                    $("#tweetbox").val("");
                     loadTweets()
                 }
             });    
@@ -162,6 +165,7 @@ $(document).ready(function() {
     })
     $("textarea#tweetbox").on("input", function() {
         validator.resetForm();
+
     })
         // queryString.length < 140 || alert("error too many characters")
         // queryString == null && alert('please input')
@@ -172,6 +176,7 @@ $(document).ready(function() {
            height: 'toggle'
         })
         validator.resetForm();
+        $('#tweetbox').focus()
    })
         
 })

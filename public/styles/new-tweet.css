@@ -25,6 +25,9 @@ main.container .new-tweet > h2 {
 
 }
 
+.disappear {
+    display: none;
+}
 section.new-tweet form {
     display: flex;
     flex-direction: column;
