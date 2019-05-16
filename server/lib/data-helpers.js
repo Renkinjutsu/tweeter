@@ -18,18 +18,9 @@ module.exports = function makeDataHelpers(db) {
       });
     },
 
-    // Get all tweets in `db`, sorted by newest first
+    // Get all tweets in `db`, pre sorted by mongo
     getTweets: function(callback) {
       db.collection("tweets").find().toArray(callback)
-    // {
-    // if(err) {
-    //   console.log('error')
-    // }
-      // console.log(db)
-      // // callback((db) => {
-      //   const sortNewestFirst = (a, b) => a.created_at - b.created_at;
-      //   callback(err, db.sort(sortNewestFirst));
-      // // });
     }
 
   };

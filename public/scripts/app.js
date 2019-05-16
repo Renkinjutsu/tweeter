@@ -1,6 +1,6 @@
 function escape(str) {
-    var div = document.createElement('div')
-    div.appendChild(document.createTextNode(str))
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
     return div.innerHTML;
     }
 
@@ -25,24 +25,24 @@ const createTweetElement = function(database) {
                             </span>
                         </footer>
                     </article>
-                    `
-    return $icons
+                    `;
+    return $icons;
 }
 
 function renderTweets(tweets) {
     for (i=0; i < tweets.length; i++) {
-        let eachTweet = createTweetElement(tweets[i])
-        $('#tweetsHolder').prepend(eachTweet)
+        let eachTweet = createTweetElement(tweets[i]);
+        $('#tweetsHolder').prepend(eachTweet);
     }
 }
 
 function loadTweets () {
-    $.get('/tweets', renderTweets)
+    $.get('/tweets', renderTweets);
 }
 
 $(document).ready(function() {
     // load initial tweets
-    loadTweets()
+    loadTweets();
     // jquery plugin, prevents eventdefault, structures error and submission pathways
     const validator = $('form').validate({
         rules: { //rules for element, input area to follow
@@ -61,12 +61,12 @@ $(document).ready(function() {
         },
         errorPlacement: function(error, element) {
             // error is prepended to the parent element with error message above
-            element.parent().prepend(error) 
+            element.parent().prepend(error);
         },
         // in case of success, this function handles next steps
         submitHandler: function (form) {
             // next two variables make the data readable for the ajax
-            let query = $(form).serialize()
+            let query = $(form).serialize();
             $.ajax({
                 url: '/tweets',
                 type: 'POST',
@@ -75,22 +75,21 @@ $(document).ready(function() {
                     console.log('error'),
                 success: function () {
                     $("#tweetbox").val("");
-                    loadTweets()
+                    loadTweets();
                 }
-            })  
-        }   
-    })
+            });  
+        } 
+    });
     // function to reset form on input
     $("textarea#tweetbox").on("input", function() {
-        validator.resetForm()
+        validator.resetForm();
     })
     // manage compose button
    $('#composeBtn').on('click', () => {
        $('section.new-tweet').animate({
            height: 'toggle' //toggle form
-        })
-        validator.resetForm() //reset form
-        $('#tweetbox').focus() //focuses on text area
-   })
-        
-})
+        });
+        validator.resetForm();//reset form
+        $('#tweetbox').focus(); //focuses on text area
+   })       
+});
