@@ -5,5 +5,4 @@ function updateChar() {
 $(document).ready(function() {
   $("textarea#tweetbox").on("input", updateChar)
   $("form").on("submit", updateChar)
-  
-});
+})

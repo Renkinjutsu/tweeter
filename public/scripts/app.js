@@ -1,17 +1,11 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
-  function escape(str) {
+function escape(str) {
     var div = document.createElement('div')
     div.appendChild(document.createTextNode(str))
     return div.innerHTML;
-  }
+    }
 
 const createTweetElement = function(database) {
-    let $icons = `<article class='new-tweet'>
+    let $icons =    `<article class='new-tweet'>
                         <header>
                             <img src='${escape(database.user.avatars.small)}'>
                             <h2>${escape(database.user.name)}</h2>
@@ -83,7 +77,7 @@ $(document).ready(function() {
                     $("#tweetbox").val("");
                     loadTweets()
                 }
-            });    
+            })  
         }   
     })
     // function to reset form on input
