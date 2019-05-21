@@ -5,15 +5,19 @@ main.container {
 }
 
 main.container .new-tweet {
-    border: 2px solid #eee;
+    border: 1px solid rgb(44, 44, 44);
     background-color: #eee;
     border-radius: 5px;
     margin: 1em;
     z-index: 2;
-    opacity: 0.7;
+    opacity: 0.6;
 }
 
 main.container .new-tweet:hover {
+    opacity: 1;
+}
+
+#compose {
     opacity: 1;
 }
 

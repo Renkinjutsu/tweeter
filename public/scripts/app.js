@@ -16,7 +16,7 @@ const createTweetElement = function(database) {
                         </p>
                         <footer>
                             <span class='date'>
-                                ${escape(moment(database.created_at))}
+                                ${escape(moment(database.created_at).startOf('second').fromNow())}
                             </span>
                             <span>
                                 <i class='fab fa-font-awesome-flag'></i>
@@ -30,6 +30,7 @@ const createTweetElement = function(database) {
 }
 // add each individual tweet to container
 function renderTweets(tweets) {
+    $('#tweetsHolder').empty();
     for (i=0; i < tweets.length; i++) {
         let eachTweet = createTweetElement(tweets[i]);
         $('#tweetsHolder').prepend(eachTweet);
@@ -67,6 +68,7 @@ $(document).ready(function() {
         submitHandler: function (form) {
             // next two variables make the data readable for the ajax
             let query = $(form).serialize();
+            console.log(query)
             $.ajax({
                 url: '/tweets',
                 type: 'POST',
@@ -74,8 +76,8 @@ $(document).ready(function() {
                 error: () =>
                     console.log('error'),
                 success: function () {
+                    loadTweets()
                     $("#tweetbox").val("");
-                    loadTweets();
                 }
             });  
         } 
@@ -89,6 +91,7 @@ $(document).ready(function() {
        $('section.new-tweet').animate({
            height: 'toggle' //toggle form
         });
+        $("#tweetbox").val("");
         validator.resetForm();//reset form
         $('#tweetbox').focus(); //focuses on text area
    })       

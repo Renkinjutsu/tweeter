@@ -1,8 +1,15 @@
 #composeBtn {
     float: right;
-    margin-top: 25px;
+    margin-top: 8px;
+    padding: 1em;
+    border-radius: 5px;
+    border: 1px solid #000;
+    color: #279b88;
+    background-color: #e6fdff;
+    font-size: 1.2em;
 }
 
 #composeBtn:hover {
-    filter: brightness(110%);
+    background-color: white;
+    color: black;
 }
